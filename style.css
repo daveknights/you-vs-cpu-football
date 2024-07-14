@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.container {
+    box-shadow: inset 0px 0px 0 37px black;
+    height: 530px;
+    margin: 0 auto;
+    padding: 40px;
+    position: relative;
+    width: 880px;
+}
+.container::before,
+.container::after {
+    background: white;
+    content: '';
+    display: block;
+    height: 150px;
+    position: absolute;
+    top: 190px;
+    width: 10px;
+}
+.container::before {
+    border-radius: 5px 0 0 5px;
+    left: 30px;
+}
+.container::after {
+    border-radius: 0 5px 5px 0;
+    right: 30px;
+}
+.instructions {
+    border: solid 3px green;
+    font-size: 1.25rem;
+    margin: 10px auto 0;
+    padding: 1rem;
+    width: 880px;
+}
+p {
+    margin: 0;
+}
+p + p {
+    margin-top: 1rem;
+}
