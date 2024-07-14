@@ -172,13 +172,13 @@ const defendTheGoal = () => {
         if (oKeeper.direction === 'down') {
             oKeeper.y += 1;
 
-            if (oKeeper.y > 265) {
+            if (oKeeper.y > 266) {
                 oKeeper.direction = 'up'
             }
         } else {
             oKeeper.y -= 1;
 
-            if (oKeeper.y < 185) {
+            if (oKeeper.y < 184) {
                 oKeeper.direction = 'down'
             }
         }
@@ -188,13 +188,13 @@ const defendTheGoal = () => {
         if (pKeeper.direction === 'down') {
             pKeeper.y += 1;
 
-            if (pKeeper.y > 265) {
+            if (pKeeper.y > 266) {
                 pKeeper.direction = 'up'
             }
         } else {
             pKeeper.y -= 1;
 
-            if (pKeeper.y < 185) {
+            if (pKeeper.y < 184) {
                 pKeeper.direction = 'down'
             }
         }
@@ -263,27 +263,33 @@ const draw = () => {
     }
 
     // Move ball while opponene has possesion
-    if (opponent.x === ball.x + 12 && opponent.y === ball.y) {
+    if (opponent.x === ball.x + 12 && opponent.y === ball.y && opponent.x > 135) {
         hasBall = 'opponent';
         ball.x -= 5;
     } else if (hasBall === 'opponent') {
-        opponent.x < 150 && (ball.x -= 5);
-
-        if (opponent.y < centerY) {
+        // Player shoots
+        if (opponent.x <= 135) {
+            // ball.x -= 5;
             opponent.x += 1;
-            opponent.y += 0.5;
+            ballSpeed = -2;
+            hasBall = '';
+        } else {
+            if (opponent.y < centerY) {
+                opponent.x += 1;
+                opponent.y += 0.5;
 
-            if (ball.y !== centerY) {
-                ball.x += 1;
-                ball.y += 0.5;
-            }
-        } else if (opponent.y > centerY) {
-            opponent.x += 1;
-            opponent.y -= 0.5;
+                if (ball.y !== centerY) {
+                    ball.x += 1;
+                    ball.y += 0.5;
+                }
+            } else if (opponent.y > centerY) {
+                opponent.x += 1;
+                opponent.y -= 0.5;
 
-            if (ball.y !== centerY) {
-                ball.x += 1;
-                ball.y -= 0.5;
+                if (ball.y !== centerY) {
+                    ball.x += 1;
+                    ball.y -= 0.5;
+                }
             }
         }
     }
